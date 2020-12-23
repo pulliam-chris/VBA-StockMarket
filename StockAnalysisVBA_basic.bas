@@ -66,9 +66,14 @@ For i = 2 To RowCount
       End If
       
       ' Calculate and Print the percentage change in the Summary Table
-      percentageChange = yearlyChange / openingPrice
-      Range("K" & Summary_Table_Row).Value = percentageChange
-      Range("K" & Summary_Table_Row).NumberFormat = "0.00%"
+      If openingPrice <> 0 Then
+        percentageChange = yearlyChange / openingPrice
+        Range("K" & Summary_Table_Row).Value = percentageChange
+        Range("K" & Summary_Table_Row).NumberFormat = "0.00%"
+      Else
+        Range("K" & Summary_Table_Row).Value = "ERR /0"
+      End If
+      
 
       ' Print the stock volume to the Summary Table by formula
       Range("L" & Summary_Table_Row).Formula = "=SUM(" & "G" & volStart & ":" & "G" & i & ")"
