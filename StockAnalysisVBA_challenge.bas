@@ -26,15 +26,12 @@ Dim Summary_Table_Row As Integer
 ' Loop through all sheets
 For Each ws In Worksheets
         
-    'MsgBox (ws.Name)
-
     'Create Summary Table headers and format
     ws.Range("I1").Value = "Ticker"
     ws.Range("J1").Value = "Yearly Change"
     ws.Range("K1").Value = "Percent Change"
     ws.Range("L1").Value = "Total Stock Volume"
 
-    
     Summary_Table_Row = 2
 
     'Count Number of populated rows in sheet
@@ -104,13 +101,10 @@ For Each ws In Worksheets
 
   Next i
   
-  'End loop
+  'End initial pass loop
   
   'Start further summary analysis
-  
-  'Row counter for summary table
-  Dim summaryRowCount As Long
-        
+          
        'Instert Calculation Table Headers
         ws.Range("P1").Value = "Ticker"
         ws.Range("Q1").Value = "Value"
@@ -118,19 +112,19 @@ For Each ws In Worksheets
         ws.Range("O3").Value = "Greatest % Decrease"
         ws.Range("O4").Value = "Greatest Total Volume"
         
-        'Row Count to determine min, max change and max volume
-        summaryRowCount = ws.Cells(Rows.Count, 9).End(xlUp).Row
+        'Row Count to determine min, max change and max volume for additional table
+        Summary_Table_Row = ws.Cells(Rows.Count, 9).End(xlUp).Row
         
         'Find biggest increase and decrease changes in the summary along with largest total volume
-        ws.Range("Q2").Formula = "=MAX(" & "K2" & ":" & "K" & summaryRowCount & ")"
+        ws.Range("Q2").Formula = "=MAX(" & "K2" & ":" & "K" & Summary_Table_Row & ")"
         ws.Range("Q2").NumberFormat = "0.00%"
-        ws.Range("Q3").Formula = "=MIN(" & "K2" & ":" & "K" & summaryRowCount & ")"
+        ws.Range("Q3").Formula = "=MIN(" & "K2" & ":" & "K" & Summary_Table_Row & ")"
         ws.Range("Q3").NumberFormat = "0.00%"
-        ws.Range("Q4").Formula = "=MAX(" & "L2" & ":" & "L" & summaryRowCount & ")"
+        ws.Range("Q4").Formula = "=MAX(" & "L2" & ":" & "L" & Summary_Table_Row & ")"
         ws.Range("Q4").NumberFormat = "General"
         
-        'For loop through summary table to find tickers for players
-        For j = 2 To summaryRowCount
+        'For loop through summary table to find tickers for biggest stock movers
+        For j = 2 To Summary_Table_Row
         If ws.Cells(j, 11).Value = ws.Range("Q2").Value Then
             ws.Range("P2").Value = ws.Cells(j, 9).Value
         ElseIf ws.Cells(j, 11).Value = ws.Range("Q3").Value Then
@@ -144,7 +138,7 @@ For Each ws In Worksheets
         ws.Columns("J:L").AutoFit
         ws.Columns("O:Q").AutoFit
      
-'All complete.  Move on to next worksheet
+'Summary complete.  Move on to next worksheet
 Next ws
      
     
