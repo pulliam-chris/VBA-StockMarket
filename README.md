@@ -6,13 +6,13 @@ The _challenge script ran in under 2 minutes on the complete data set.
 
 
 ### 2014
-![2014 Stock Summary] (https://github.com/pulliam-chris/VBA-StockMarket/blob/main/images/2014_Summary.JPG "2014 Summary")
+![2014 Stock Summary] (https://github.com/pulliam-chris/VBA-StockMarket/blob/main/images/2014_Summary.JPG)
 
 
 ### 2015
-![2015 Stock Summary] (https://github.com/pulliam-chris/VBA-StockMarket/blob/main/images/2015_Summary.JPG "2015 Summary")
+![2015 Stock Summary] (https://github.com/pulliam-chris/VBA-StockMarket/blob/main/images/2015_Summary.JPG)
 
 
 ### 2016
-![2016 Stock Summary] (https://github.com/pulliam-chris/VBA-StockMarket/blob/main/images/2016_Summary.JPG "2016 Summary")
+![2016 Stock Summary] (https://github.com/pulliam-chris/VBA-StockMarket/blob/main/images/2016_Summary.JPG)
 
